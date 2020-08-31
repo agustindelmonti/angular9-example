@@ -15,6 +15,10 @@ export class ArticlesService {
     );
   }
 
+  createArticle(article: any) {
+    return this.http.post<any>(`${this.url}/articles`, article);
+  }
+
   getTags() {
     return this.http.get<any>(`${this.url}/tags`);
   }

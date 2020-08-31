@@ -1,0 +1,26 @@
+form {
+  margin: 16px;
+}
+
+.form-group {
+  margin-bottom: 8px;
+  font-size: 1.25rem;
+  border-radius: 0.3rem;
+}
+
+.form-control {
+  display: block;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.25;
+  color: #55595c;
+  background-color: #fff;
+  background-image: none;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.25rem;
+}
+
+textarea {
+  resize: vertical;
+}

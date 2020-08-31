@@ -1,40 +1,43 @@
-<h1>Feed</h1>
-<div *ngIf="articles" class="feed">
-  <div *ngFor="let article of articles" class="preview">
-    <div class="top">
-      <img [src]="article.author.image" class="avatar" />
-      <div class="header">
-        <div class="user">
-          <p>
-            Posted by {{ article.author.username }}
-            {{ article.createdAt | dateAgo }}
-          </p>
-          <button *ngIf="!article.author.following" (click)="toggleFollow()">
-            Follow
-          </button>
-        </div>
+<div class="feed">
+  <app-article-form class="preview"></app-article-form>
 
-        <div>
-          <h2>{{ article.title }}</h2>
+  <div *ngIf="articles">
+    <div *ngFor="let article of articles" class="preview">
+      <div class="top">
+        <img [src]="article.author.image" class="avatar" />
+        <div class="header">
+          <div class="user">
+            <p>
+              Posted by {{ article.author.username }}
+              {{ article.createdAt | dateAgo }}
+            </p>
+            <button *ngIf="!article.author.following" (click)="toggleFollow()">
+              Follow
+            </button>
+          </div>
 
-          <div *ngIf="article.tagList" class="tag-list">
-            <div *ngFor="let tag of article.tagList">
-              <span class="tag">{{ tag }}</span>
+          <div>
+            <h2>{{ article.title }}</h2>
+
+            <div *ngIf="article.tagList" class="tag-list">
+              <div *ngFor="let tag of article.tagList">
+                <span class="tag">{{ tag }}</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
 
-    <div class="body">
-      <p>{{ article.body }}</p>
-    </div>
+      <div class="body">
+        <p>{{ article.body }}</p>
+      </div>
 
-    <div class="footer">
-      {{ article.favoritesCount }}
-      <button *ngIf="!article.favorited" (click)="toggleFollow()">
-        +Fav
-      </button>
+      <div class="footer">
+        {{ article.favoritesCount }}
+        <button *ngIf="!article.favorited" (click)="toggleFollow()">
+          +Fav
+        </button>
+      </div>
     </div>
   </div>
 </div>

@@ -5,19 +5,24 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ArticleComponent } from './article/article.component';
 import { RouterModule } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { DateAgoPipe } from './pipes/date-ago.pipe';
+import { ArticleFormComponent } from './article-form/article-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { AuthInterceptorService } from './auth-interceptor.service';
 
 @NgModule({
   declarations: [
     AppComponent,
     ArticleComponent,
-    DateAgoPipe
+    DateAgoPipe,
+    ArticleFormComponent,
   ],
   imports: [
     HttpClientModule,
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
   ],
   providers: [
     {
@@ -28,4 +33,4 @@ import { DateAgoPipe } from './pipes/date-ago.pipe';
   ],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
