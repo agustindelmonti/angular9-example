@@ -1,0 +1,12 @@
+<div class="user-date-container">
+    <span class="username">
+        {{comment.author.username}}
+    </span>
+    <span class="comment-date">
+        {{comment.createdAt | dateAgo  }}
+    </span>
+</div>
+<p class="comment-body">
+    {{comment.body}}
+</p>
+<mat-divider class="divider"></mat-divider>

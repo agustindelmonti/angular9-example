@@ -1,0 +1,70 @@
+<div class="row no-gutters justify-content-center">
+    <div class="col-12 article">
+        <h1 class="article-title">
+            {{article.title}}
+        </h1>
+
+        <div class="d-flex">
+            <div class="d-flex user-info-container">
+                <img [src]="article.author.image" class="avatar" alt="avatar">
+                
+                <div class="d-flex flex-column justify-content-center">
+                    <span>
+                        {{article.author.username}}
+                    </span>
+                    <span>
+                        {{article.createdAt | date}}
+                    </span>
+                </div>
+            </div>
+
+            <div class="d-flex align-items-center">
+                <button mat-raised-button class="follow-button d-flex justify-content-center align-items-center">
+                    <mat-icon>add</mat-icon>
+                    <span>
+                        Follow {{article.author.username}}
+                    </span>
+                </button>
+                <button mat-raised-button class="favorite-button d-flex justify-content-center align-items-center">
+                    <mat-icon>star</mat-icon>
+                    <span>
+                        Favorite article
+                    </span>
+                </button>
+            </div>
+        </div>
+
+        <p class="article-body">
+            {{article.body}}
+        </p>
+    </div>  
+</div>
+
+<div *ngIf="user !== null" class="comment-form-container row no-gutters justify-content-center">
+    <div class="col-7">
+        <form [formGroup]="commentForm" (ngSubmit)="onSubmit()" class="comment-form">
+            <mat-form-field>
+                <textarea 
+                    matInput 
+                    placeholder="Leave a comment" 
+                    formControlName="commentControl"
+                    rows="4">
+                </textarea>
+            </mat-form-field>
+            
+            <div class="d-flex justify-content-end">
+                <button mat-raised-button color="primary" type="submit" [disabled]="commentForm.invalid">
+                    Submit
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+<div class="comment-list-container row no-gutters justify-content-center">
+    <div class="col-7">
+        <article-comment *ngFor="let comment of comments" [comment]="comment"></article-comment>
+    </div>
+</div>
+
