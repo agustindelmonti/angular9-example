@@ -66,10 +66,11 @@ export class ArticleDetailComponent implements OnInit, OnDestroy {
         this.articleService.postComment({
             article: this.article,
             commentBody: this.commentForm.controls.commentControl.value
-        }).subscribe();
+        }).subscribe(() => {
+            this.articleService.getArticleComments(this.article.slug)
+                .subscribe(comments => this.comments = comments);
 
-        this.articleService.getArticleComments(this.article.slug)
-            .subscribe(comments => this.comments = comments);
+        });
     }
 
 
